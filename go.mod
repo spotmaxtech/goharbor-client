@@ -1,4 +1,4 @@
-module github.com/mittwald/goharbor-client/v5
+module github.com/spotmaxtech/goharbor-client/v5
 
 go 1.17
 
@@ -9,6 +9,7 @@ require (
 	github.com/go-openapi/swag v0.19.15
 	github.com/go-openapi/validate v0.20.3
 	github.com/goharbor/harbor/src v0.0.0-20211025104526-d4affc2eba6d
+	github.com/mittwald/goharbor-client/v5 v5.0.3
 	github.com/stretchr/testify v1.7.0
 	k8s.io/apimachinery v0.21.0
 
@@ -38,7 +39,6 @@ require (
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/lib/pq v1.10.0 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
-	github.com/mattn/go-sqlite3 v1.14.6 // indirect
 	github.com/mitchellh/mapstructure v1.4.3 // indirect
 	github.com/oklog/ulid v1.3.1 // indirect
 	github.com/opencontainers/go-digest v1.0.0 // indirect
