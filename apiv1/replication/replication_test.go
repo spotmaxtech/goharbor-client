@@ -7,10 +7,10 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/mittwald/goharbor-client/v5/apiv1/internal/api/client"
-	"github.com/mittwald/goharbor-client/v5/apiv1/internal/api/client/products"
-	"github.com/mittwald/goharbor-client/v5/apiv1/mocks"
-	"github.com/mittwald/goharbor-client/v5/apiv1/model"
+	"github.com/spotmaxtech/goharbor-client/v5/apiv1/internal/api/client"
+	"github.com/spotmaxtech/goharbor-client/v5/apiv1/internal/api/client/products"
+	"github.com/spotmaxtech/goharbor-client/v5/apiv1/mocks"
+	"github.com/spotmaxtech/goharbor-client/v5/apiv1/model"
 
 	"github.com/go-openapi/runtime"
 	runtimeclient "github.com/go-openapi/runtime/client"

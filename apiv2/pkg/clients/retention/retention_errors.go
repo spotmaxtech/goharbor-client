@@ -5,8 +5,8 @@ import (
 
 	"github.com/go-openapi/runtime"
 
-	"github.com/mittwald/goharbor-client/v5/apiv2/internal/api/client/retention"
-	"github.com/mittwald/goharbor-client/v5/apiv2/pkg/errors"
+	"github.com/spotmaxtech/goharbor-client/v5/apiv2/internal/api/client/retention"
+	"github.com/spotmaxtech/goharbor-client/v5/apiv2/pkg/errors"
 )
 
 const (

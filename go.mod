@@ -9,7 +9,6 @@ require (
 	github.com/go-openapi/swag v0.19.15
 	github.com/go-openapi/validate v0.20.3
 	github.com/goharbor/harbor/src v0.0.0-20211025104526-d4affc2eba6d
-	github.com/mittwald/goharbor-client/v5 v5.0.3
 	github.com/stretchr/testify v1.7.0
 	k8s.io/apimachinery v0.21.0
 

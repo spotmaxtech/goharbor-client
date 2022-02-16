@@ -9,10 +9,10 @@ import (
 
 	"github.com/go-openapi/runtime"
 
-	"github.com/mittwald/goharbor-client/v5/apiv1/internal/api/client"
-	"github.com/mittwald/goharbor-client/v5/apiv1/internal/api/client/products"
-	"github.com/mittwald/goharbor-client/v5/apiv1/mocks"
-	model "github.com/mittwald/goharbor-client/v5/apiv1/model"
+	"github.com/spotmaxtech/goharbor-client/v5/apiv1/internal/api/client"
+	"github.com/spotmaxtech/goharbor-client/v5/apiv1/internal/api/client/products"
+	"github.com/spotmaxtech/goharbor-client/v5/apiv1/mocks"
+	model "github.com/spotmaxtech/goharbor-client/v5/apiv1/model"
 
 	runtimeclient "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
