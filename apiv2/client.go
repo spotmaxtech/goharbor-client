@@ -2,6 +2,7 @@ package apiv2
 
 import (
 	"context"
+	"github.com/spotmaxtech/goharbor-client/v5/apiv2/pkg/clients/artifact"
 	"net/url"
 	"strings"
 
@@ -12,12 +13,17 @@ import (
 	"github.com/spotmaxtech/goharbor-client/v5/apiv2/pkg/clients/gc"
 	"github.com/spotmaxtech/goharbor-client/v5/apiv2/pkg/clients/health"
 	"github.com/spotmaxtech/goharbor-client/v5/apiv2/pkg/clients/member"
+	"github.com/spotmaxtech/goharbor-client/v5/apiv2/pkg/clients/project"
 	"github.com/spotmaxtech/goharbor-client/v5/apiv2/pkg/clients/projectmeta"
 	"github.com/spotmaxtech/goharbor-client/v5/apiv2/pkg/clients/quota"
+	"github.com/spotmaxtech/goharbor-client/v5/apiv2/pkg/clients/registry"
+	"github.com/spotmaxtech/goharbor-client/v5/apiv2/pkg/clients/replication"
 	"github.com/spotmaxtech/goharbor-client/v5/apiv2/pkg/clients/repository"
 	"github.com/spotmaxtech/goharbor-client/v5/apiv2/pkg/clients/retention"
 	"github.com/spotmaxtech/goharbor-client/v5/apiv2/pkg/clients/robot"
 	"github.com/spotmaxtech/goharbor-client/v5/apiv2/pkg/clients/robotv1"
+	"github.com/spotmaxtech/goharbor-client/v5/apiv2/pkg/clients/systeminfo"
+	"github.com/spotmaxtech/goharbor-client/v5/apiv2/pkg/clients/user"
 	"github.com/spotmaxtech/goharbor-client/v5/apiv2/pkg/clients/webhook"
 	"github.com/spotmaxtech/goharbor-client/v5/apiv2/pkg/common"
 	"github.com/spotmaxtech/goharbor-client/v5/apiv2/pkg/config"
@@ -27,18 +33,13 @@ import (
 	"github.com/go-openapi/strfmt"
 
 	v2client "github.com/spotmaxtech/goharbor-client/v5/apiv2/internal/api/client"
-
-	"github.com/spotmaxtech/goharbor-client/v5/apiv2/pkg/clients/project"
-	"github.com/spotmaxtech/goharbor-client/v5/apiv2/pkg/clients/registry"
-	"github.com/spotmaxtech/goharbor-client/v5/apiv2/pkg/clients/replication"
-	"github.com/spotmaxtech/goharbor-client/v5/apiv2/pkg/clients/systeminfo"
-	"github.com/spotmaxtech/goharbor-client/v5/apiv2/pkg/clients/user"
 )
 
 const v2URLSuffix string = "/v2.0"
 
 type Client interface {
 	auditlog.Client
+	artifact.Client
 	gc.Client
 	health.Client
 	member.Client
@@ -59,6 +60,7 @@ type Client interface {
 // RESTClient implements the Client interface as a REST client
 type RESTClient struct {
 	auditlog    *auditlog.RESTClient
+	artifact    *artifact.RESTClient
 	gc          *gc.RESTClient
 	health      *health.RESTClient
 	member      *member.RESTClient
@@ -84,6 +86,7 @@ func NewRESTClient(v2Client *v2client.Harbor, opts *config.Options, authInfo run
 
 	return &RESTClient{
 		auditlog:    auditlog.NewClient(v2Client, opts, authInfo),
+		artifact:    artifact.NewClient(v2Client, opts, authInfo),
 		gc:          gc.NewClient(v2Client, opts, authInfo),
 		health:      health.NewClient(v2Client, opts, authInfo),
 		member:      member.NewClient(v2Client, opts, authInfo),
@@ -124,6 +127,12 @@ func NewRESTClientForHost(u, username, password string, opts *config.Options) (*
 
 func (c *RESTClient) ListAuditLogs(ctx context.Context) ([]*modelv2.AuditLog, error) {
 	return c.auditlog.ListAuditLogs(ctx)
+}
+
+// Artifact Client
+
+func (c *RESTClient) ListArtifacts(ctx context.Context, projectName, repositoryName string) ([]*modelv2.Artifact, error) {
+	return c.artifact.ListArtifacts(ctx, projectName, repositoryName)
 }
 
 // GC Client
